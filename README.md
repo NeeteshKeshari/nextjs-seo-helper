@@ -1,40 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 📦 nextjs-seo-helper
 
-## Getting Started
+**nextjs-seo-helper** is a simple yet powerful npm package designed to help Next.js developers manage SEO metadata, structured data, and sitemap generation in a consistent and automated way.  
+It works smoothly with **Next.js Pages Router** projects.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✅ Features
+
+- ✅ Easily inject SEO meta tags:
+  - Title
+  - Meta Description
+  - Canonical URL
+  - Open Graph (OG) tags
+  - Structured Data (JSON-LD)
+
+- ✅ Automatically generate a `sitemap.xml`
+  - Supports static or dynamic pages
+  - Generates the file directly in your `public/` folder
+
+---
+
+## 🚀 Benefits
+
+- 📚 Centralized SEO logic
+- ✅ Works out-of-the-box with Next.js Pages Router
+- 🚀 Saves time: no need to manually manage meta tags or sitemaps
+- 🔧 Fully customizable
+- ✅ Structured Data support for better search engine understanding
+- ✅ Compatible with modern Next.js projects
+
+---
+
+## ⚡️ Installation
+
+<pre>
+npm install nextjs-seo-helper
+</pre>
+
+
+✅ Usage Instructions
+1️⃣ Inject SEO Metadata in Next.js Pages
+
+Use the <SeoHead /> component in your Next.js pages to easily inject SEO metadata.
+
+```
+import { SeoHead } from 'nextjs-seo-helper';
+
+export default function HomePage() {
+  return (
+    <>
+      <SeoHead
+        title="Home Page"
+        description="Welcome to the home page of our awesome site"
+        canonical="https://example.com/"
+        openGraph={{
+          title: "Home Page OG Title",
+          description: "Home page Open Graph description",
+          images: [{ url: "https://example.com/image.png" }],
+        }}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "https://example.com/",
+          "name": "Example Site",
+        }}
+      />
+    </>
+  );
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+2️⃣ Generate sitemap.xml
+Step 1: Create Sitemap Generator Script
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Create a file at scripts/generate-sitemap.mjs:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```
+import { generateSitemap } from 'nextjs-seo-helper';
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+const pages = ['/', '/about', '/login'];
+const siteUrl = 'https://example.com';
 
-## Learn More
+generateSitemap(pages, siteUrl);
+```
 
-To learn more about Next.js, take a look at the following resources:
+Step 2: Run Manually
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+```
+node scripts/generate-sitemap.mjs
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Step 3: Or Add as a Postbuild Step
 
-## Deploy on Vercel
+In your package.json:
+```
+{
+  "scripts": {
+    "build": "next build",
+    "postbuild": "node scripts/generate-sitemap.mjs"
+  }
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+After running, the sitemap will be generated at:
+```
+/public/sitemap.xml
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+------------------------------------------------------------------------------------
+⚠️ Limitations
+
+❌ Works only with Next.js Pages Router (App Router not supported yet).
+
+⚠️ Does not auto-discover pages — you must pass an array of page paths manually.
+
+❌ No built-in dynamic data fetching for sitemap generation (custom logic required).
+
+⚠️ Metadata injection works at the page level only (server-level injection not supported).
+
+------------------------------------------------------------------------------------
+
+✅ Planned Future Enhancements
+
+Auto page discovery for dynamic projects
+
+App Router support
+
+Support for advanced sitemap features (last modified, multi-language)
+
+------------------------------------------
+Made with ❤️ for Next.js developers.
+
+------------------------------------------
+
+## 👤 Author
+
+**Neetesh Keshari [Engineering Manager]**
+
+- GitHub: [https://github.com/neeteshkeshari](https://github.com/neeteshkeshari)
+- Website: [https://linktr.ee/neeteshkeshari](https://linktr.ee/neeteshkeshari)
+- LinkedIn: [https://www.linkedin.com/in/neeteshkeshari/](https://www.linkedin.com/in/neeteshkeshari/)
+
