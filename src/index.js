@@ -1,8 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-export { SeoHead } from './SeoHead';
-export { getMetadata } from './getMetadata';
-export { generateSitemap } from './sitemap';
+import { SeoHead } from './SeoHead';
+import { getMetadata } from './getMetadata';
+
+// Only expose SeoHead and getMetadata by default
+export { SeoHead, getMetadata };
 
 export function generateHead({ title, description, canonical, openGraph, structuredData }) {
   return (

@@ -77,7 +77,7 @@ Step 1: Create Sitemap Generator Script
 Create a file at scripts/generate-sitemap.mjs:
 
 ```
-import { generateSitemap } from 'nextjs-seo-helper';
+import { generateSitemap } from 'nextjs-seo-helper/generate-sitemap';
 
 const pages = ['/', '/about', '/login'];
 const siteUrl = 'https://example.com';

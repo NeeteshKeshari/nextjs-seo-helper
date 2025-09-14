@@ -10,12 +10,6 @@ Object.defineProperty(exports, "SeoHead", {
   }
 });
 exports.generateHead = generateHead;
-Object.defineProperty(exports, "generateSitemap", {
-  enumerable: true,
-  get: function get() {
-    return _sitemap.generateSitemap;
-  }
-});
 Object.defineProperty(exports, "getMetadata", {
   enumerable: true,
   get: function get() {
@@ -26,8 +20,9 @@ var _react = _interopRequireDefault(require("react"));
 var _head = _interopRequireDefault(require("next/head"));
 var _SeoHead = require("./SeoHead");
 var _getMetadata = require("./getMetadata");
-var _sitemap = require("./sitemap");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+// Only expose SeoHead and getMetadata by default
+
 function generateHead(_ref) {
   var _openGraph$images;
   var title = _ref.title,

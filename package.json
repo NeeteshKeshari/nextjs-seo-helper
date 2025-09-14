@@ -1,7 +1,11 @@
 {
   "name": "nextjs-seo-helper",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "main": "dist/index.js",
+ "exports": {
+    ".": "./dist/index.js",
+    "./generate-sitemap": "./dist/sitemapGenerator.js"
+  },
   "scripts": {
     "build": "babel src -d dist"
   },
